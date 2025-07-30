@@ -4,33 +4,33 @@ This is a working repository for a simple standalone script that generates rando
 
 ``` JSON
 {
- "databaseName":"DATABASE_pBjBHlRNrFdAAfdg",
- "createdAt":"2025-07-30T16:45:06Z",
+ "databaseName":"DATABASE_wIkfoZOPRiwAW1qx",
+ "createdAt":"2025-07-30T16:51:35Z",
  "cols":{
-  "count":<INT>,
+  "count":<5 to 15>,
   "items":[
    {
     "id":0,
-    "name":"COLUMN_xEhq3wDv"
+    "name":"COLUMN_p9IcJ6fO"
    },
    {
     "id":1,
-    "name":"COLUMN_pGmmCau3"
+    "name":"COLUMN_qLCBmwi6"
    },
    ...
   ],
  },
  "changeLog":{
-  "count":<INT>,
+  "count":<10 to 100>,
   "items":[
    {
     "id":0,
-    "timestamp":"2025-08-01T12:08:41Z",
+    "timestamp":"2025-07-31T03:37:56Z",
     "name":"CHANGE_0"
    },
    {
     "id":1,
-    "timestamp":"2025-08-02T15:11:56Z",
+    "timestamp":"2025-08-01T21:18:48Z",
     "name":"CHANGE_1"
    },
    ...
@@ -53,3 +53,9 @@ All of these parameters are adjustable within the script, and I expect the struc
 2. Double-click the file to run it using the WScript engine.
 
 It will generate one file in the same folder, with a name like "2025_06_03_15_53_59_173_metadata.json" based on the current time. Note that the timestamp is UTC, and it includes milliseconds, so there should never be a filename conflict, unless two copies of the script are somehow running at the exact same instant. I would highly recommend putting this in a folder by itself, so that the output files do not clutter up any folder with other types of file in it.
+
+# To do
+
+1. I need to refine my understanding of the actual structure that I'm attempting to imitate, and implement it in the generator.
+2. I need to characterize what non-anomalous metadata would look like, and ensure that the generator produces it reliably.
+3. I need to characterize what anomalous metadata would look like, and create functionality that will purposefully generate specific types of anomaly.
