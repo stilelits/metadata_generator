@@ -100,6 +100,6 @@
   var metadata = generate_metadata_object();
   var path = SCRIPT_FOLDER + get_UTC_timestamp()  + '_metadata.json';
   output_JSON_to_file(metadata, path);
-  SHELL.ShellExecute(path); 
+  //SHELL.ShellExecute(path); //uncomment this line if you wish to immediately open the json for viewing
  </script>
 </job>
