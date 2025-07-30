@@ -30,7 +30,13 @@ This is a working repository for a simple standalone script that generates rando
 }
 ```
 
-The names of the columns and the database are randomized alphanumeric strings. The "createdAt" timestamp is just the current time, and each changeLog timestamp is randomized to be between one minute and two days after the previous change. All of these parameters are adjustable within the script, and I expect the structure itself to completely change over the next few weeks, but right now it serves as a simple proof-of-concept for generating random data in a controlled format.
+The names of the columns and the database are randomized alphanumeric strings. It's possible, but highly unlikely, that two columns could have conflicting names, but right now there is no conflict check.
+
+The "createdAt" timestamp is just the current time, and each changeLog timestamp is randomized to be between one minute and two days after the previous change. 
+
+The script generates between 5 and 15 columns, and between 10 and 100 changes.
+
+All of these parameters are adjustable within the script, and I expect the structure itself to completely change over the next few weeks, but right now it serves as a simple proof-of-concept for generating random data in a controlled format.
 
 # Usage
 
