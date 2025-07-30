@@ -13,6 +13,10 @@ This is a working repository for a simple standalone script that generates rando
     "id":0,
     "name":"COLUMN_xEhq3wDv"
    },
+   {
+    "id":1,
+    "name":"COLUMN_pGmmCau3"
+   },
    ...
   ],
  },
@@ -23,6 +27,11 @@ This is a working repository for a simple standalone script that generates rando
     "id":0,
     "timestamp":<TIMESTAMP>,
     "name":"CHANGE_0"
+   },
+   {
+    "id":1,
+    "timestamp":<TIMESTAMP>,
+    "name":"CHANGE_1"
    },
    ...
   ]
