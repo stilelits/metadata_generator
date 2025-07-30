@@ -5,7 +5,7 @@ This is a working repository for a simple standalone script that generates rando
 ``` JSON
 {
  "databaseName":"DATABASE_pBjBHlRNrFdAAfdg",
- "createdAt":<TIMESTAMP>,
+ "createdAt":"2025-07-30T16:45:06Z",
  "cols":{
   "count":<INT>,
   "items":[
@@ -25,12 +25,12 @@ This is a working repository for a simple standalone script that generates rando
   "items":[
    {
     "id":0,
-    "timestamp":<TIMESTAMP>,
+    "timestamp":"2025-08-01T12:08:41Z",
     "name":"CHANGE_0"
    },
    {
     "id":1,
-    "timestamp":<TIMESTAMP>,
+    "timestamp":"2025-08-02T15:11:56Z",
     "name":"CHANGE_1"
    },
    ...
