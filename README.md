@@ -49,10 +49,15 @@ All of these parameters are adjustable within the script, and I expect the struc
 
 # Usage
 
-1. Download "metadata_generator.wsh" to any folder where you have write access, on a Windows machine.
-2. Double-click the file to run it using the WScript engine.
+1. Download "metadata_generator.wsh"
+2. Double-click the file to run it using the WScript engine
 
 It will generate one file in the same folder, with a name like "2025_06_03_15_53_59_173_metadata.json" based on the current time. Note that the timestamp is UTC, and it includes milliseconds, so there should never be a filename conflict, unless two copies of the script are somehow running at the exact same instant. I would highly recommend putting this in a folder by itself, so that the output files do not clutter up any folder with other types of file in it.
+
+# Dependencies
+
+1. An external library is loaded from http://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js in order to perform JSON stringification. This requires internet access, but it is not expected that this library will ever be unavailable.
+2. The file must be run on a Windows machine with WScript enabled, in a folder where the user has write access.
 
 # To do
 
