@@ -4,7 +4,7 @@ This is a working repository for a simple standalone script that generates rando
 
 ``` JSON
 {
- "databaseName":"DATABASE_eBmB1CdZ",
+ "databaseName":"DATABASE_pBjBHlRNrFdAAfdg",
  "createdAt":<TIMESTAMP>,
  "cols":{
   "count":<INT>,
@@ -40,7 +40,7 @@ All of these parameters are adjustable within the script, and I expect the struc
 
 # Usage
 
-1. Download the .wsh file to any folder you have write access, on a Windows machine.
+1. Download "metadata_generator.wsh" to any folder where you have write access, on a Windows machine.
 2. Double-click the file to run it using the WScript engine.
 
 It will generate one file in the same folder, with a name like "2025_06_03_15_53_59_173_metadata.json" based on the current time. Note that the timestamp is UTC, and it includes milliseconds, so there should never be a filename conflict, unless two copies of the script are somehow running at the exact same instant. I would highly recommend putting this in a folder by itself, so that the output files do not clutter up any folder with other types of file in it.
