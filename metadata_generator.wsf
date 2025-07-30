@@ -1,0 +1,105 @@
+<job id="OutputMetadata">
+ <script language="JScript" src="http://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js"/>
+ 
+ <script language="JScript" name="CONSTANTS">
+  var FSO = new ActiveXObject("Scripting.FileSystemObject");
+  var SCRIPT_PATH = WScript.ScriptFullName;
+  var SCRIPT_FOLDER = FSO.getFile(SCRIPT_PATH).ParentFolder.Path + '\\';
+  var WSH_SHELL = new ActiveXObject("WScript.Shell");
+  var SHELL = new ActiveXObject("Shell.Application");
+  var ALPHANUMERIC_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+ </script>
+ 
+ <script language="JScript" name="HELPER FUNCTIONS">
+  function echo(msg){WScript.echo(msg);}
+  function seconds(num){return num * 1000;}
+  function minutes(num){return num * 60 * 1000;}
+  function hours(num){return num * 60 * 60 * 1000;}
+  function days(num){return num * 24 * 60 * 60 * 1000;}
+  function pad_zeros(num, padTo){
+   result = num.toString();
+   while (result.length < padTo){result = '0' + result;}
+   return result;
+  }
+  function get_UTC_timestamp(date){
+   if (!date){date = new Date();}
+   var result = [];
+   result.push(date.getUTCFullYear());
+   result.push(pad_zeros(date.getUTCMonth(), 2));
+   result.push(pad_zeros(date.getUTCDay(), 2));
+   result.push(pad_zeros(date.getUTCHours(), 2));
+   result.push(pad_zeros(date.getUTCMinutes(), 2));
+   result.push(pad_zeros(date.getUTCSeconds(), 2));
+   result.push(pad_zeros(date.getUTCMilliseconds(), 3));
+   return result.join('_');
+  }
+  function output_JSON_to_file(obj, path){
+   var outFile = FSO.CreateTextFile(path, true, 2); 
+   outFile.write(JSON.stringify(obj));
+   outFile.close();  
+  }
+  function random_int(min, max){
+   return Math.floor(min + Math.random() * (max - min));
+  }
+  function random_alphanumeric(){
+   return ALPHANUMERIC_CHARS.charAt(Math.floor(Math.random() * ALPHANUMERIC_CHARS.length));
+  }
+  function random_str(len){
+   var result = '';
+   for (var i=0; i<len; i++){
+    result += random_alphanumeric();
+   }
+   return result;
+  }
+ </script>
+ 
+ <script language="JScript" name="METADATA GENERATOR">
+  function generate_metadata_object(){
+   var createdAt = new Date();
+   var result = {};
+   result.databaseName = "DATABASE_" + generate_random_name(16);
+   result.createdAt = createdAt;
+   result.cols = generate_random_cols(random_int(5, 15));
+   result.changeLog = generate_random_changelog(random_int(10,100), createdAt);
+   return result;
+  }
+  function generate_random_name(len){
+   return random_str(len ? len : 8); //default to 8 characters long, if unspecified
+  }
+  function generate_random_cols(count){
+   var result = {'count':count, 'items':[]};
+   for (var i=0;i<count;i++){
+    result.items.push(generate_random_col(i));
+   }
+   return result;
+  }
+  function generate_random_col(id){
+   var result = {};
+   result.id = id;
+   result.name = "COLUMN_" + generate_random_name();
+   return result;
+  }
+  function generate_random_changelog(count, startTime, intervalMin, intervalMax){
+   if (!intervalMin){intervalMin = minutes(5);}
+   if (!intervalMax){intervalMax = days(2);}
+   var changeTimeMs = startTime ? startTime.getTime() : new Date().getTime(); //clone the object so we don't modify the original
+   var result = {'count':count, 'items':[]};
+   for (var i=0;i<count;i++){
+    changeTimeMs += random_int(intervalMin, intervalMax);
+    result.items.push(generate_random_change(i, new Date(changeTimeMs)));
+   }
+   return result;
+  }
+  function generate_random_change(id, changeTime){
+   var result = {};
+   result.id = id;
+   result.timestamp = changeTime;
+   result.name = "CHANGE_" + id;
+   return result;
+  }
+  var metadata = generate_metadata_object();
+  var path = SCRIPT_FOLDER + get_UTC_timestamp()  + '_metadata.json';
+  output_JSON_to_file(metadata, path);
+  SHELL.ShellExecute(path); 
+ </script>
+</job>
