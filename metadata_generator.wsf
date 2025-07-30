@@ -82,7 +82,7 @@
   function generate_random_changelog(count, startTime, intervalMin, intervalMax){
    if (!intervalMin){intervalMin = minutes(5);}
    if (!intervalMax){intervalMax = days(2);}
-   var changeTimeMs = startTime ? startTime.getTime() : new Date().getTime(); //clone the object so we don't modify the original
+   var changeTimeMs = startTime ? startTime.getTime() : new Date().getTime(); //clone the object so we do not modify the original
    var result = {'count':count, 'items':[]};
    for (var i=0;i<count;i++){
     changeTimeMs += random_int(intervalMin, intervalMax);
