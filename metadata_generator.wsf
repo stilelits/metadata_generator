@@ -34,7 +34,7 @@
    return result.join('_');
   }
   function output_JSON_to_file(obj, path){
-   var outFile = FSO.CreateTextFile(path, true, 2); 
+   var outFile = FSO.CreateTextFile(path, false, true);
    outFile.write(JSON.stringify(obj));
    outFile.close();  
   }
