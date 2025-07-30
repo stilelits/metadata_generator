@@ -56,7 +56,7 @@ It will generate one file in the same folder, with a name like "2025_06_03_15_53
 
 # Dependencies
 
-1. An external library is loaded from http://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js in order to perform JSON stringification. This requires internet access, but it is not expected that this library will ever be unavailable.
+1. An external library is loaded from http://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js in order to perform JSON stringification. This requires internet access, but it is not expected that this library will ever be unavailable. (In general, it's unwise to load external libraries like this, but it simplifies execution if the user only has to download one file.)
 2. The file must be run on a Windows machine with WScript enabled, in a folder where the user has write access.
 
 # To do
