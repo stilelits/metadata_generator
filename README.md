@@ -6,19 +6,28 @@ This is a working repository for a simple standalone script that generates rando
 {
  "databaseName":"DATABASE_wIkfoZOPRiwAW1qx",
  "createdAt":"2025-07-30T16:51:35Z",
- "cols":{
-  "count":<5 to 15>,
+ "tables":{
+  "count":<5 to 10>,
   "items":[
-   {
-    "id":0,
-    "name":"COLUMN_p9IcJ6fO"
-   },
-   {
-    "id":1,
-    "name":"COLUMN_qLCBmwi6"
+   "id":0,
+   "name":"TABLE_i7L6ISiZ",
+   "cols":{
+    "count":<10 to 20>,
+    "items":[
+     {
+      "id":0,
+      "name":"COLUMN_p9IcJ6fO"
+     },
+     {
+      "id":1,
+      "name":"COLUMN_qLCBmwi6"
+     },
+     ...
+    ],
    },
    ...
   ],
+  ...
  },
  "changeLog":{
   "count":<10 to 100>,
@@ -39,11 +48,11 @@ This is a working repository for a simple standalone script that generates rando
 }
 ```
 
-The names of the columns and the database are randomized alphanumeric strings. It's possible, but highly unlikely, that two columns could have conflicting names, but right now there is no conflict check.
+The names of the columns and the database are randomized alphanumeric strings. It's possible, but highly unlikely, that two columns/tables could have conflicting names, but right now there is no conflict check.
 
 The "createdAt" timestamp is just the current time, and each changeLog timestamp is randomized to be between one minute and two days after the previous change. 
 
-The script generates between 5 and 15 columns, and between 10 and 100 changes.
+The script generates between 5 and 10 tables, each one with between 10 and 20 columns. There are between 10 and 100 changes.
 
 All of these parameters are adjustable within the script, and I expect the structure itself to completely change over the next few weeks, but right now it serves as a simple proof-of-concept for generating random data in a controlled format.
 

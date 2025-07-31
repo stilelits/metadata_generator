@@ -59,12 +59,26 @@
    var result = {};
    result.databaseName = "DATABASE_" + generate_random_name(16);
    result.createdAt = createdAt;
-   result.cols = generate_random_cols(random_int(5, 15));
+   result.tables = generate_random_tables(random_int(5, 10));
    result.changeLog = generate_random_changelog(random_int(10,100), createdAt);
    return result;
   }
   function generate_random_name(len){
    return random_str(len ? len : 8); //default to 8 characters long, if unspecified
+  }
+  function generate_random_tables(count){
+   var result = {'count':count, 'items':[]};
+   for (var i=0;i<count;i++){
+    result.items.push(generate_random_table(i));
+   }
+   return result;
+  }
+  function generate_random_table(id){
+   var result = {};
+   result.id = id;
+   result.name = "TABLE_" + generate_random_name();
+   result.cols = generate_random_cols(random_int(10, 20));
+   return result;
   }
   function generate_random_cols(count){
    var result = {'count':count, 'items':[]};
