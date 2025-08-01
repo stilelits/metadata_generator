@@ -17,10 +17,12 @@ This is a working repository for a simple standalone script that generates rando
      {
       "id":0,
       "name":"COLUMN_p9IcJ6fO"
+      "data_type":"integer",
      },
      {
       "id":1,
       "name":"COLUMN_qLCBmwi6"
+      "data_type":"varchar(50)",
      },
      ...
     ],
