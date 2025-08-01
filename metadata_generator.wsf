@@ -51,6 +51,9 @@
    }
    return result;
   }
+  function select_random_from_array(arr){
+   return arr[Math.floor(Math.random() * arr.length)];
+  }
  </script>
  
  <script language="JScript" name="METADATA GENERATOR">
@@ -77,6 +80,7 @@
    var result = {};
    result.id = id;
    result.name = "TABLE_" + generate_random_name();
+   result.name = "TABLE_" + generate_random_name(30);
    result.cols = generate_random_cols(random_int(10, 20));
    return result;
   }
@@ -90,8 +94,21 @@
   function generate_random_col(id){
    var result = {};
    result.id = id;
+   result.data_type = generate_random_data_type();
    result.name = "COLUMN_" + generate_random_name();
+   if (id == 0){ //TODO: maybe randomly decide whether or not a table has a primary key?
+    result.primary_key = true;
+   }
    return result;
+  }
+  var data_types = [
+   'integer',
+   'varchar(16)',
+   'varchar(50)',
+   'datetime'
+  ];
+  function generate_random_data_type(){
+   return select_random_from_array(data_types);
   }
   function generate_random_changelog(count, startTime, intervalMin, intervalMax){
    if (!intervalMin){intervalMin = minutes(5);}
@@ -114,6 +131,6 @@
   var metadata = generate_metadata_object();
   var path = SCRIPT_FOLDER + get_UTC_timestamp()  + '_metadata.json';
   output_JSON_to_file(metadata, path);
-  //SHELL.ShellExecute(path); //uncomment this line if you wish to immediately open the json for viewing
+  SHELL.ShellExecute(path); //uncomment this line if you wish to immediately open the json for viewing
  </script>
 </job>
